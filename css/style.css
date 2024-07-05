@@ -12,18 +12,20 @@ body {
 .header {
     padding: 80px;
     text-align: center;
-    background-image: url('/images/主楼.jpg');
+    background-image: url('../images/主楼.jpg');
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
     
+}
+
+.header  h1{
     margin-top: 80px; /* 调整这个值来向下移动标题 */
     color: black;
     font-size: 60px;
 }
-
  
 /* 列容器 */
 .row {  
@@ -36,21 +38,21 @@ body {
 /* 创建两个列 */
 /* 边栏 */
 .side {
-    -ms-flex: 30%; /* IE10 */
-    flex: 30%; /* 边栏宽度占 40% */
+    -ms-flex: 35%; /* IE10 */
+    flex: 35%; /* 边栏宽度占 40% */
     background-color: #f1f1f1;
     padding: 20px;
 }
  
 /* 主要的内容区域 */
 .main {
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%; /* 主要内容区域占 60% */
+    -ms-flex: 65%; /* IE10 */
+    flex: 65%; /* 主要内容区域占 60% */
     background-color: white;
     padding: 20px;
 }
 .special_courses, .experiment_courses, .mooc, .cross_major, .other_resources {
-    width: 215px; /* 指定宽度 */
+    width: 420px; /* 指定宽度 */
     height: 100px; /* 指定高度 */
     display: inline-block;
     margin: 10px;
