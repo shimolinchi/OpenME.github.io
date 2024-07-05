@@ -19,8 +19,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-attachment: fixed;
-    height: 250vh;
-    margin-top: 20px;
+    height: 100vh;
+    margin-top: 50px;
     color: black;
 }
  
@@ -28,21 +28,6 @@ body {
 .header h1 {
     font-size: 60px;
 }
-/* 导航 */
-/* .navbar {
-    overflow: hidden;
-    background-color: #333;
-}
- 
-/* 导航栏样式 */
-/* .navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-}   */
- 
 /* 右侧链接*/
 .navbar a.right {
     float: right;
@@ -72,7 +57,8 @@ body {
 }
  
 /* 主要的内容区域 */
-.main {   
+.special_courses {   
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,8 +75,59 @@ body {
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
 }
+.experiment_courses {   
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+.mooc {   
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+.cross_major {   
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
 
- 
+
 /* 底部 */
 .footer {
     padding: 20px;
