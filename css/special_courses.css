@@ -11,11 +11,10 @@ body {
 /* 标题 */
 .header {
     text-align: center;
-    background-image: url('images/main_building.jpg');
+    background-image: url('images/主楼.jpg');
     /* background-size: 1620px 911px; */
     background-size: contain;
     background-position: top center;
-    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-attachment: fixed;
