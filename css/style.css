@@ -11,7 +11,7 @@ body {
 /* 标题 */
 .header {
     text-align: center;
-    background-image: url('images/主楼.jpg');
+    background-image: url('/images/主楼.jpg');
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
@@ -36,21 +36,21 @@ body {
 /* 创建两个列 */
 /* 边栏 */
 .side {
-    -ms-flex: 40%; /* IE10 */
-    flex: 40%; /* 边栏宽度占 40% */
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%; /* 边栏宽度占 40% */
     background-color: #f1f1f1;
     padding: 20px;
 }
  
 /* 主要的内容区域 */
 .main {
-    -ms-flex: 60%; /* IE10 */
-    flex: 60%; /* 主要内容区域占 60% */
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%; /* 主要内容区域占 60% */
     background-color: white;
     padding: 20px;
 }
-.special_courses, .experiment_courses, .mooc, .cross_major {
-    width: 200px; /* 指定宽度 */
+.special_courses, .experiment_courses, .mooc, .cross_major, .other_resources {
+    width: 230px; /* 指定宽度 */
     height: 100px; /* 指定高度 */
     display: inline-block;
     margin: 10px;
@@ -67,7 +67,7 @@ body {
 }
 
 /* 鼠标悬停时的样式 */
-.special_courses:hover, .experiment_courses:hover, .mooc:hover, .cross_major:hover {
+.special_courses:hover, .experiment_courses:hover, .mooc:hover, .cross_major:hover, .other_resources:hover {
     background-color: black;
     color: white;
 }
@@ -94,13 +94,5 @@ body {
 @media screen and (max-width: 700px) {
     .row {   
         flex-direction: column;
-    }
-}
- 
-/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
-@media screen and (max-width: 400px) {
-    .navbar a {
-        float: none;
-        width: 100%;
     }
 }
