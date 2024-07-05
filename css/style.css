@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+ 
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+ 
+/* 标题 */
+.header {
+    text-align: center;
+    background-image: url('images/main_building.jpg');
+    /* background-size: 1620px 911px; */
+    background-size: contain;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-attachment: fixed;
+    height: 100vh;
+    color: black;
+}
+.header h1 {
+    margin-top: 100px; /* 调整这个值来向下移动标题 */
+}
+ 
+/* 标题字体加大 */
+.header h1 {
+    font-size: 60px;
+}
+
+/* 列容器 */
+.row {  
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+}
+ 
+/* 创建两个列 */
+/* 边栏 */
+.side {
+    -ms-flex: 40%; /* IE10 */
+    flex: 40%; /* 边栏宽度占 40% */
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+ 
+/* 主要的内容区域 */
+.main {
+    -ms-flex: 60%; /* IE10 */
+    flex: 60%; /* 主要内容区域占 60% */
+    background-color: white;
+    padding: 20px;
+}
+.special_courses, .experiment_courses, .mooc, .cross_major {
+    width: 200px; /* 指定宽度 */
+    height: 100px; /* 指定高度 */
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 鼠标悬停时的样式 */
+.special_courses:hover, .experiment_courses:hover, .mooc:hover, .cross_major:hover {
+    background-color: black;
+    color: white;
+}
+
+/* 容器样式，用于对齐框 */
+.links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* 调整框之间的间距 */
+    margin-top: 20px; /* 调整容器的上边距 */
+}
+
+
+/* 底部 */
+
+.other_resourses {
+    padding: 20px;
+    text-align: right;
+    color: black;
+}
+ 
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+ 
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
