@@ -10,15 +10,15 @@ body {
  
 /* 标题 */
 .header {
-    padding: 80px;
     text-align: center;
     background-image: url('images/main_building.jpg');
     /* background-size: 1620px 911px; */
-    background-size: auto;
-    background-position: center center;
+    background-size: contain;
+    background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    height: 100vh;
     color: black;
 }
  
@@ -26,22 +26,20 @@ body {
 .header h1 {
     font-size: 40px;
 }
- 
 /* 导航 */
-.navbar {
+/* .navbar {
     overflow: hidden;
     background-color: #333;
 }
  
 /* 导航栏样式 */
-.navbar a {
+/* .navbar a {
     float: left;
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 20px;
     text-decoration: none;
-}
+}   */
  
 /* 右侧链接*/
 .navbar a.right {
