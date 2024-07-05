@@ -12,17 +12,15 @@ body {
 .header {
     text-align: center;
     background-image: url('images/main_building.jpg');
-    /* background-size: 1620px 911px; */
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
     background-attachment: fixed;
-    height: 100vh;
-    color: black;
 }
 .header h1 {
-    margin-top: 100px; /* 调整这个值来向下移动标题 */
+    margin-top: 80px; /* 调整这个值来向下移动标题 */
+    color: black;
 }
  
 /* 标题字体加大 */
