@@ -19,7 +19,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-attachment: fixed;
-    height: 300vh;
+    height: 250vh;
+    margin-top: 20px;
     color: black;
 }
  
@@ -72,10 +73,21 @@ body {
  
 /* 主要的内容区域 */
 .main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+     /* margin-top: 20px;调整这个值来向下移动链接 */
+    display: inline-block;
+    margin: 10px;
+    padding: 20px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
     background-color: white;
-    padding: 20px;
+    color: black;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
 }
 
  
