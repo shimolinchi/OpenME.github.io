@@ -10,24 +10,19 @@ body {
  
 /* 标题 */
 .header {
+    padding: 80px;
     text-align: center;
-    background-image: url('images/主楼.jpg');
-    /* background-size: 1620px 911px; */
+    background-image: url('../images/主楼.jpg');
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
     background-attachment: fixed;
     height: 100vh;
-    color: black;
 }
 .header h1 {
     margin-top: 100px; /* 调整这个值来向下移动标题 */
-}
-
-/* 标题字体加大 */
-.header h1 {
     font-size: 60px;
+    color: black;
 }
 
 .main {
@@ -67,6 +62,13 @@ body {
     justify-content: center;
     gap: 20px; /* 调整框之间的间距 */
     margin-top: 20px; /* 调整容器的上边距 */
+}
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
 }
 
  
