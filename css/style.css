@@ -13,7 +13,6 @@ body {
     padding: 80px;
     text-align: center;
     background-image: url('../images/主楼.jpg');
-    background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
