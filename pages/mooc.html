@@ -44,4 +44,52 @@ body {
     color: black;
     font-size: 60px;
 }
+
+.main {
+          background-color: white;
+          padding: 20px;
+      }
+        .mooc {
+          width: 420px; /* 指定宽度 */
+          height: 100px; /* 指定高度 */
+          display: inline-block;
+          margin: 10px;
+          padding: 20px 40px;
+          border: 3px solid black;
+          border-radius: 10px;
+          background-color: white;
+          color: black;
+          text-decoration: none;
+          font-family: 'Microsoft YaHei', sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+          text-align: center;
+          transition: background-color 0.3s, color 0.3s;
+      }
+      .mooc:hover {
+        background-color: black;
+        color: white;
+      }
+      .links-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* 调整框之间的间距 */
+        margin-top: 20px; /* 调整容器的上边距 */
+      }
+      @media screen and (max-width: 700px) {
+          .header {   
+            background-size: cover;
+            height: 100vh;
+          }
+          .special_courses, .experiment_courses, .mooc, .cross_major, .other_resources {
+          width: 300px; /* 指定宽度 */
+          height: 80px; /* 指定高度 */
+      }
+      }
+      @media screen and (max-width: 1500px) {
+          .header {   
+            height: 400px;
+          }
+      }
 </style>
