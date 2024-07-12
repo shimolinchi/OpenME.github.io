@@ -1,0 +1,188 @@
+主函数：
+%1.输入已知数据
+clear;
+Ax = 0; Ay = 0; Adx = 0; Ady = 0; Addx = 0; Addy = 0;%***A点数据
+Bx = 0; Bdx = 0; Bdy = 5; Bddx = 0; Bddy = 0;%***********B点数据
+LBC = 105; LBE = 180; LBG = 195; LCG = 90;%***************2杆长度数据
+LAC = 110; LAD = 85;%************************************3杆各段长度数据
+LDF = 90;%***********************************************4杆长度数据
+LFG = 25; LGI = 215;%*************************************5杆长度数据
+LEH = 215;%***********************************************6杆长度数据
+LHI = 15; LIM = 235; phi = 180;%**************************7杆长度、角度数据
+hd = pi/180; du = 180/pi;
+phi = phi*hd;
+n = 0;
+
+%2.调用子函数RRR、RR计算各个杆件和点的位移、速度、加速度
+for i = -180:-20
+    By = i;
+    n = n+1;
+    [Cx,Cy,Cdx,Cdy,Cddx,Cddy,theta_AC, theta_BC,omega_AC,omega_BC,alpha_AC,alpha_BC]...
+        = RRR(Ax,Ay,Adx,Ady,Addx,Addy,Bx,By,Bdx,Bdy,Bddx,Bddy,LAC,LBC,0);
+    [Dx,Dy,Ddx,Ddy,Dddx,Dddy] = RR(Ax,Ay,Adx,Ady,Addx,Addy,theta_AC,omega_AC,alpha_AC,LAD);
+    [Ex,Ey,Edx,Edy,Eddx,Eddy] = RR(Bx,By,Bdx,Bdy,Bddx,Bddy,theta_BC,omega_BC,alpha_BC,LBE);
+    [Fx,Fy,Fdx,Fdy,Fddx,Fddy] = RR(Dx,Dy,Ddx,Ddy,Dddx,Dddy,theta_BC,omega_BC,alpha_BC,LDF);%因为DF杆与BC杆平行
+    [Gx,Gy,Gdx,Gdy,Gddx,Gddy] = RR(Bx,By,Bdx,Bdy,Bddx,Bddy,theta_BC,omega_BC,alpha_BC,LBG);
+    [Ix,Iy,Idx,Idy,Iddx,Iddy] = RR(Gx,Gy,Gdx,Gdy,Gddx,Gddy,theta_AC,omega_AC,alpha_AC,LGI);%因为FG杆与AC杆平行
+    [Hx,Hy,Hdx,Hdy,Hddx,Hddy,theta_EH, theta_IH,omega_EH,omega_IH,alpha_EH,alpha_IH]...
+        = RRR(Ex,Ey,Edx,Edy,Eddx,Eddy,Ix,Iy,Idx,Idy,Iddx,Iddy,LEH,LHI,1);%H也可以仅调用RR求解
+    [Mx,My,Mdx,Mdy,Mddx,Mddy] = RR(Ix,Iy,Idx,Idy,Iddx,Iddy,theta_IH+phi,omega_IH,alpha_IH,LIM);
+    XB(n) = Bx; YB(n) = By;
+    XC(n) = Cx; YC(n) = Cy;
+    XD(n) = Dx; YD(n) = Dy;
+    XE(n) = Ex; YE(n) = Ey;
+    XF(n) = Fx; YF(n) = Fy;
+    XG(n) = Gx; YG(n) = Gy;
+    XH(n) = Hx; YH(n) = Hy;
+    XI(n) = Ix; YI(n) = Iy;
+    XM(n) = Mx; YM(n) = My;
+    DXM(n) = Mdx; DYM(n) = Mdy;
+    DDXM(n) = Mddx; DDYM(n) = Mddy;
+end
+
+%3.位移、速度、加速度和八连杆机构图形输出
+figure(1);
+j = -180:-20;
+subplot(2,3,1);     %绘x位移线图
+plot(j,XM,'c');
+title('M点x位移线图');
+xlabel('移动副位置 By mm')
+ylabel('x位移 mm')
+grid on; hold on;
+
+subplot(2,3,2);     %绘y位移线图
+plot(j,YM,'m');
+title('M点y位移线图');
+xlabel('移动副位置 By mm')
+ylabel('y位移 mm')
+grid on; hold on;
+
+subplot(2,3,3);     %绘x速度线图
+plot(j,DXM,'k');
+title('M点x速度线图');
+xlabel('移动副位置 By mm')
+ylabel('x速度 mm/s')
+grid on; hold on;
+
+subplot(2,3,4);     %绘y速度线图
+plot(j,DYM,'r');
+title('M点y速度线图');
+xlabel('移动副位置 By mm')
+ylabel('y速度 mm')
+grid on; hold on;
+
+subplot(2,3,5);     %绘x加速度线图
+plot(j,DDXM,'g');
+title('M点x加速度线图');
+xlabel('移动副位置 By mm')
+ylabel('x加速度 mm/s^2')
+grid on; hold on;
+
+subplot(2,3,6);     %绘y加速度线图
+plot(j,DDYM,'b');
+title('M点y加速度线图');
+xlabel('移动副位置 By/mm')
+ylabel('y加速度 mm/s^2')
+grid on; hold on;
+
+%4.连杆机构仿真图像输出
+figure(2);
+m = moviein(20);
+k=0;
+for n2 = -180:-20
+    k = k+1;
+    clf;
+    x(1) = 0; y(1) = 0;
+    x(2) = XB(k);y(2) = YB(k);
+    x(3) = XC(k);y(3) = YC(k);
+    x(4) = XD(k);y(4) = YD(k);
+    x(5) = XE(k);y(5) = YE(k);
+    x(6) = XF(k);y(6) = YF(k);
+    x(7) = XG(k);y(7) = YG(k);
+    x(8) = XH(k);y(8) = YH(k);
+    x(9) = XI(k);y(9) = YI(k);
+    x(10) = XM(k);y(10) = YM(k);
+    plot([x(1),x(2)],[y(1),y(2)]);
+    grid on; hold on;
+    plot([x(2),x(7)],[y(2),y(7)]);
+    grid on; hold on;
+    plot([x(1),x(3)],[y(1),y(3)]);
+    grid on; hold on;
+    plot([x(4),x(6)],[y(4),y(6)]);
+    grid on; hold on;
+    plot([x(5),x(8)],[y(5),y(8)]);
+    grid on; hold on;
+    plot([x(6),x(9)],[y(6),y(9)]);
+    grid on; hold on;
+    plot([x(8),x(9)],[y(8),y(9)]);
+    grid on; hold on;
+    plot([x(9),x(10)],[y(9),y(10)]);
+    grid on; hold on;
+    plot(x(1),y(1),'o');
+    plot(x(2),y(2),'o');
+    plot(x(3),y(3),'o');
+    plot(x(4),y(4),'o');
+    plot(x(5),y(5),'o');
+    plot(x(6),y(6),'o');
+    plot(x(7),y(7),'o');
+    plot(x(8),y(8),'o');
+    plot(x(9),y(9),'o');
+    plot(x(10),y(10),'o');
+    axis([-20 700 -250 20]);
+    m(k) = getframe;
+    MakeGif('My.Gif',k);
+end
+movie(m);
+
+
+RR杆组：
+function [Bx,By,Bdx,Bdy,Bddx,Bddy] = RR(Ax,Ay,Adx,Ady,Addx,Addy,theta,omega,alpha,Len)
+%位置
+Bx = Ax + Len*cos(theta);
+By = Ay + Len*sin(theta);
+%速度
+Bdx = Adx - omega*Len*sin(theta);
+Bdy = Ady + omega*Len*cos(theta);
+%加速度
+Bddx = Addx - omega*omega*Len*cos(theta) - alpha*Len*sin(theta);
+Bddy = Addy - omega*omega*Len*sin(theta) + alpha*Len*cos(theta);
+end
+
+
+RRR杆组：
+function [Cx,Cy,Cdx,Cdy,Cddx,Cddy,theta_BC, theta_DC,omega_BC,omega_DC,alpha_BC,alpha_DC]...
+        = RRR(Bx,By,Bdx,Bdy,Bddx,Bddy,Dx,Dy,Ddx,Ddy,Dddx,Dddy,LBC,LCD,Flag)
+LBD = sqrt((Dx-Bx)*(Dx-Bx) + (Dy-By)*(Dy-By));
+A = 2*LBC*(Dx-Bx);
+B = 2*LBC*(Dy-By);
+C = LBC*LBC + LBD*LBD - LCD*LCD;
+%顺时针布置
+if Flag == 0
+theta_BC = atan2(B,A) - atan2(-sqrt(A*A + B*B - C*C),C);
+%theta_BC = 2*atan( (B + sqrt(A*A + B*B -C*C))/(A + C));
+end
+%逆时针布置
+if Flag == 1
+theta_BC = 2*atan( (B - sqrt(A*A + B*B -C*C))/(A + C));
+end
+Cx = Bx + LBC*cos(theta_BC);
+Cy = By + LBC*sin(theta_BC);
+theta_DC = atan2((Cy - Dy),(Cx - Dx));
+%速度方程
+CBC = LBC*cos(theta_BC);
+SBC = LBC*sin(theta_BC);
+CDC = LCD*cos(theta_DC);
+SDC = LCD*sin(theta_DC);
+G1 = CBC*SDC - CDC*SBC;
+omega_BC = (CDC*(Ddx - Bdx) + SDC*(Ddy - Bdy))/G1;
+omega_DC = (CBC*(Ddx - Bdx) + SBC*(Ddy - Bdy))/G1;
+Cdx = Bdx - omega_BC*LBC*sin(theta_BC);
+Cdy = Bdy + omega_BC*LBC*cos(theta_BC);
+%加速度
+G2 = Dddx - Bddx + omega_BC*omega_BC*CBC - omega_DC*omega_DC*CDC;
+G3 = Dddy - Bddy + omega_BC*omega_BC*SBC - omega_DC*omega_DC*SDC;
+alpha_BC = (G2*CDC + G3*SDC)/G1;
+alpha_DC = (G2*CBC + G3*SBC)/G1;
+Cddx = Bddx-omega_BC*omega_BC*LBC*cos(theta_BC) - alpha_BC*LBC*sin(theta_BC);
+Cddy = Bddy-omega_BC*omega_BC*LBC*sin(theta_BC) + alpha_BC*LBC*cos(theta_BC);
+end
