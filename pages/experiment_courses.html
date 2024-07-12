@@ -10,8 +10,8 @@
   <body>
     <div class="main">
       <div class="links-container">
-        <a href="../pages/experiment_courses/材料力学实验.html" class="Materials_lab">材料力学实验</a>
-        <a href="../pages/experiment_courses/机械原理实验.html" class="MMT_lab">机械原理实验</a>
+        <a href="../pages/experiment_courses/材料力学实验.html" class="m1">材料力学实验</a>
+        <a href="../pages/experiment_courses/机械原理实验.html" class="m2">机械原理实验</a>
       </div>
     </div>
   </body>
@@ -46,36 +46,39 @@ body {
     font-size: 60px;
 }
 
-.Physics_lab, .Materials_lab, .MMT_lab {
-    width: 200px; /* 指定宽度 */
-    height: 100px; /* 指定高度 */
-    display: inline-block;
-    margin: 10px;
-    padding: 20px 40px;
-    border: 3px solid black;
-    border-radius: 10px;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-    font-family: 'Microsoft YaHei', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
-.Physics_lab:hover, .Materials_lab:hover, .MMT_lab:hover {
-    background-color: black;
-    color: white;
-}
-/* 容器样式，用于对齐框 */
-.links-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* 调整框之间的间距 */
-    margin-top: 20px; /* 调整容器的上边距 */
-}
-
-@media screen and (max-width: 700px) {
+.main {
+          background-color: white;
+          padding: 20px;
+      }
+        .m1, .m2, .m3 , .m4, .m5, .m6, .m7 , .m8, .m9, .m10, .m11 , .m12 {
+          width: 420px; /* 指定宽度 */
+          height: 100px; /* 指定高度 */
+          display: inline-block;
+          margin: 10px;
+          padding: 20px 40px;
+          border: 3px solid black;
+          border-radius: 10px;
+          background-color: white;
+          color: black;
+          text-decoration: none;
+          font-family: 'Microsoft YaHei', sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+          text-align: center;
+          transition: background-color 0.3s, color 0.3s;
+      }
+      .m1:hover, .m2:hover, .m3:hover , .m4:hover, .m5:hover, .m6:hover, .m7:hover, .m8:hover, .m9:hover, .m10:hover, .m11:hover, .m12:hover {
+        background-color: black;
+        color: white;
+      }
+      .links-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* 调整框之间的间距 */
+        margin-top: 20px; /* 调整容器的上边距 */
+      }
+      @media screen and (max-width: 700px) {
           .header {   
             background-size: cover;
             height: 100vh;
